@@ -1,0 +1,484 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Components of polarizability}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Two theorems}\label{two-theorems}
+
+    \subsection{Wigner-Eckart theorem}\label{wigner-eckart-theorem}
+
+    $\langle \alpha j m \mid  T_q^{(k)} \mid \alpha^{'} j^{'} m^{'} \rangle = (-1)^{2k} \langle \alpha j  \mid \mid \textbf{T}^{(k)} \mid \mid \alpha^{'} j^{'}  \rangle \langle jm \mid j^{'} m^{'}; k q \rangle$
+
+contains Clebsh-Gordon coefficients
+
+    \subsection{Decomposition rule}\label{decomposition-rule}
+
+    For a single subsystem,
+
+$\langle  j  \mid \mid \textbf{T}^{(k)} \mid \mid j^{'}  \rangle = \delta_{j_2 j_2^{'}} (-1)^{j^{'} + j_1 + k + j_{2}} \sqrt{(2j^{'} + 1)(2 j_1 + 1)}  \begin{Bmatrix} j_{1} & j_{1}^{'} & k \\ j^{'} & j  & j_{2} \\ \end{Bmatrix} \langle  j_1  \mid \mid \textbf{T}^{(k)} \mid \mid j_1^{'}  \rangle$
+
+Wigner-6j symbol, recoupling of three angular momenta
+
+    \section{DC Stark shifts}\label{dc-stark-shifts}
+
+    $H_{int} = - \textbf{d} \cdot \textbf{E}$
+
+Second order time-independent perturabtion theory gives,
+
+$\Delta E_{\alpha} = \sum_j \frac{\mid \langle \alpha \mid H_{int} \mid \beta_j \rangle \mid^2}{E_{\alpha} - E_{\beta_j}} = \langle \alpha \mid H_{stark} \mid \alpha \rangle$
+
+$H_{stark} = \sum_j \frac{d_{\mu} \mid \beta_j \rangle \langle \beta_j \mid d_{\nu}}{E_{\alpha} - E_{\beta_j}}E_{\mu} E_{\nu} = S_{\mu \nu} E_{\mu} E_{\nu}$
+
+where
+$S_{\mu \nu} = \sum_j \frac{d_{\mu} \mid \beta_j \rangle \langle \beta_j \mid d_{\nu}}{E_{\alpha} - E_{\beta_j}}$
+
+    $\textbf{A Cartesian tensor of rank 2 can be decomposed into irreducible spherical tensors of rank 0, 1, 2 as}$
+
+$M_{\alpha \beta} = \frac{1}{3} M^{(0)} \delta_{\alpha \beta} + \frac{1}{4} M_{\mu}^{(1)} \epsilon_{\mu \alpha \beta} + M_{\alpha \beta}^{(2)}$
+
+where
+
+$M^{(0)} = M_{\mu \mu}$
+
+$M_{\mu}^{(1)} = \epsilon_{\mu \sigma \tau} (M_{\sigma \tau} - M_{\tau \sigma})$
+
+$M_{\alpha \beta}^{(2)} = M_{\alpha \beta} - \frac{1}{3} M_{\mu \mu} \delta_{\alpha \beta}$
+
+    Same for $S_{\mu \nu}$
+
+$S^{(0)} = S_{\mu \mu}$
+
+$S_{\mu}^{(1)} = 0$
+
+$S_{\mu \nu}^{(2)} = S_{\mu \nu} - \frac{1}{3} S_{\sigma \sigma} \delta_{\mu \nu}$
+
+$\Delta E_{\alpha} = \frac{1}{3} \langle \alpha \mid S^{(0)} \mid \alpha \rangle E^2 + \langle \alpha \mid S^{(2)}_{\mu \nu} \mid \alpha \rangle E_{\mu} E_{\nu}$
+
+scalar and tensor shift
+
+    \subsection{Scalar shift}\label{scalar-shift}
+
+    Using Wigner-Eckart theorem, we have\ldots{}
+
+$\alpha^{(0)}(J) = -\frac{2}{3} \sum_{J^{'}} \frac{\mid \langle J \mid\mid \textbf{d} \mid\mid J^{'}\rangle \mid^2}{E_J - E_{J}^{'}}$
+
+$\Delta E_J ^{(0)} = -\frac{1}{2} \alpha^{(0)} (J) E^2$
+
+independent of $m_J$: orientation-independent shift
+
+    \subsection{Tensor shift}\label{tensor-shift}
+
+    Switch to spherical basis (Roman indices: spherical components. Greek:
+Cartesian components)
+
+$\langle \alpha \mid S^{(2)}_{\mu \nu} \mid \alpha \rangle E_{\mu} E_{\nu}  = \sum_q (-1)^{q} \langle J m_J \mid S^{(2)}_q \mid J m_J \rangle [\textbf{EE}]^{(2)}_{-q}$
+
+Applying Wigner-Eckart theorem one time, we find the only non-vanishing
+contribution comes from $q = 0$, and
+
+$[\textbf{EE}]^{(2)}_{0} = \frac{1}{\sqrt{6}}(3E_z^2 - E^2)$
+
+We define tensor polarizability as (in order to get the the correct
+normalization)
+
+$\alpha^{(2)}(J) = -\langle J \mid \mid S^{(2)}_q \mid \mid J \rangle \sqrt{\frac{8J(2J-1)}{3(J+1)(2J+3)}}$
+
+$\Delta E_{J, m_J} ^{(2)} = -\frac{1}{4} \alpha^{(2)} (J) (3E_z^2 - E^2) \frac{3 m_J^2 - J(J+1)}{J(2J-1)}$
+
+$\textbf{Normalization.}$ Let $\textbf{E} = E_z \hat{z}$,
+$\Delta E_{J, \pm{J}} ^{(2)} = -\frac{1}{2} \alpha^{(2)}(J) E_z^2$
+
+depends on $m_J$
+
+Use one more time Wigner-Eckart theorem, we have
+
+$\alpha^{(2)}(J) =  \sum_{J^{'}} (-1)^{J + J^{'} + 1} \sqrt{\frac{40J (2J+1)(2J-1)}{3(J+1)(2J+3)}}\begin{Bmatrix} 1 & 1 & 2 \\ J & J  & J^{'} \\ \end{Bmatrix} \frac{\mid \langle J \mid\mid \textbf{d} \mid\mid J^{'}\rangle \mid^2}{E_J - E_{J}^{'}}$
+
+    \subsection{Note}\label{note}
+
+    $J = 0$ or $J = \frac{1}{2}$, no tensor shift
+
+    \section{AC Stark shifts (light
+shifts)}\label{ac-stark-shifts-light-shifts}
+
+    $\textbf{E}(\textbf{r}) = \hat{\varepsilon} E_0^{(+)} (\textbf{r}) e^{-i \omega t} + c.c.$
+
+Second order time-dependent perturbation theory
+
+$\Delta E_{\alpha} = -\sum_{\beta} \frac{2 \omega_{\beta \alpha} \mid \langle \alpha \mid \hat{\varepsilon} \cdot \textbf{d} \mid \beta \rangle \mid^2 \mid E_0^{(+)} \mid^2}{\hbar (\omega_{\beta \alpha}^2 - \omega^2)}$
+
+$\Delta E_{\alpha} = -\frac{1}{2} \textbf{d}^{(+)} \cdot \textbf{E}^{(-)} - \frac{1}{2} \textbf{d}^{(-)} \cdot \textbf{E}^{(+)} = - Re[\alpha(\omega)] \mid E_0^{(+)} \mid^2$
+
+$\alpha(\omega) = \sum_{\beta} \frac{2 \omega_{\beta \alpha} \mid \langle \alpha \mid \hat{\varepsilon} \cdot \textbf{d} \mid \beta \rangle \mid^2}{\hbar (\omega_{\beta \alpha}^2 - \omega^2)}$
+
+    Define
+
+$\alpha_{\mu \nu}(\omega) = \sum_{\beta} \frac{2 \omega_{\beta \alpha}  \langle \alpha \mid d_{\mu} \mid \beta \rangle \langle \beta \mid d_{\nu} \mid \alpha \rangle }{\hbar (\omega_{\beta \alpha}^2 - \omega^2)}$
+
+$\Delta E_{\alpha} = - Re[\alpha_{\mu \nu}(\omega)]  (E_0^{(-)})_{\mu} (E_0^{(+)})_{\nu} $
+
+$\alpha_{\mu \nu}(J, m_J, \omega) = \sum_{J^{'}} \frac{2 \omega_{J^{'} J}  T_{\mu \nu} }{\hbar (\omega_{J^{'} J}^2 - \omega^2)}$
+
+$ T_{\mu \nu} = \sum_{m_J^{'}}\langle J m_J \mid d_{\mu} \mid J^{'} m_J^{'}\rangle \langle J^{'} m_J^{'} \mid d_{\nu} \mid J m_J \rangle$
+
+
+    \subsection{Scalar shift}\label{scalar-shift}
+
+    $T^{(0)} = T_{\mu \mu}$
+
+Using Wigner-Eckart theorem,
+
+$T^{(0)} = \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2$
+
+$\alpha^{(0)}(J, \omega) = \sum_{J^{'}} \frac{2 \omega_{J^{'} J} \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2}{3 \hbar (\omega_{J^{'} J}^2 - \omega^2)}$
+
+$m_J$ independent
+
+    \subsection{Vector shift}\label{vector-shift}
+
+    $T_{\mu}^{(1)} = \epsilon_{\mu \sigma \tau} (T_{\sigma \tau} - T_{\tau \sigma}) = 2 \epsilon_{\mu \sigma \tau} 2 T_{\sigma \tau}$
+
+$T_{q}^{(1)} = (-1)^{J + J^{'}}(-i) \sqrt{\frac{24(2J + 1)}{J(J+1)}} \begin{Bmatrix} 1 & 1 & 1 \\ J & J  & J^{'} \\ \end{Bmatrix} \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2 m_J \delta_{q0}$
+
+$\alpha^{(1)}(J, \omega) = \sum_{J^{'}}(-1)^{J + J^{'} + 1} \sqrt{\frac{6J(2J + 1)}{J+1}} \begin{Bmatrix} 1 & 1 & 1 \\ J & J  & J^{'} \\ \end{Bmatrix}  \frac{ \omega_{J^{'} J} \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2}{\hbar (\omega_{J^{'} J}^2 - \omega^2)}$
+
+    \subsection{Tensor shift}\label{tensor-shift}
+
+$T_{\alpha \beta}^{(2)} = T_{\alpha \beta} - \frac{1}{3} T_{\mu \mu} \delta_{\alpha \beta}$
+
+$T_{q}^{(2)} = (-1)^{J + J^{'}} \sqrt{\frac{5(2J + 1)}{J(J+1)(2J-1)(2J+3)}} \begin{Bmatrix} 1 & 1 & 2 \\ J & J  & J^{'} \\ \end{Bmatrix} \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2 [m_J^2-J(J+1)] \delta_{q0}$
+
+$\alpha^{(2)}(J, \omega) = \sum_{J^{'}}(-1)^{J + J^{'}} \sqrt{\frac{40J(2J + 1)(2J-1)}{3(J+1)(2J+3)}} \begin{Bmatrix} 1 & 1 & 2 \\ J & J  & J^{'} \\ \end{Bmatrix}  \frac{ \omega_{J^{'} J} \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2}{\hbar (\omega_{J^{'} J}^2 - \omega^2)}$
+
+    \subsection{Total light shift}\label{total-light-shift}
+
+    $\Delta E(J, m_J, \omega) = -\alpha^{(0)}(J, \omega) \mid E_0^{(+)} \mid^2 -\alpha^{(1)}(J, \omega)(i \textbf{E}_0^{(-)} \times \textbf{E}_0^{(+)})_z \frac{m_J}{J} - \alpha^{(2)}(J, \omega) \frac{3 \mid E_{0z}^{(+)} \mid^2 - \mid E_0^{(+)} \mid^2}{2} \frac{3 m_J^2 - J(J+1)}{J(2J-1)}$
+
+$\textbf{Normalization.}$ Note
+$(i \textbf{E}_0^{(-)} \times \textbf{E}_0^{(+)})_z = \mid \textbf{E}_{0, -1}^{(+)}\mid^2 - \mid \textbf{E}_{0, 1}^{(-)}\mid^2$.
+Then $\sigma^{+} (\textbf{E}_0^{(+)} = E^{(+)}_{0, -1})$ has light shift
+
+$\Delta E_{J, \pm{J}} ^{(1)} = \mp \alpha^{(1)}(J) \mid E_{0, -1}^{(+)}\mid^2$
+
+    \subsection{Note}\label{note}
+
+    \begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Linear polarization drives the scalar and tensor light shifts, thus
+  acts as an effective dc electric field
+\item
+  Circurly polarization drives the vector light shift, acts as an
+  effective magnetic field
+\item
+  $J = 0$ or $J = \frac{1}{2}$, no tensor light shift
+\item
+  $J = 0$, no vector light shift
+\end{enumerate}
+
+    \section{Decay rate and calculation of reduced matrix
+elements}\label{decay-rate-and-calculation-of-reduced-matrix-elements}
+
+    Wigner-Eckart theorem
+
+$\Gamma_{n^{'} J^{'} \rightarrow nJ} = \frac{\omega_{n^{'} J^{'} \rightarrow nJ}^3}{3 \pi \epsilon_0 \hbar c^3} \frac{2 J + 1}{2 J^{'} + 1} \mid \langle nJ \mid \mid \textbf{d} \mid \mid n^{'} J^{'} \rangle \mid^2$
+
+Using the decomposition rule
+
+$\langle nJ \mid \mid \textbf{d} \mid \mid n^{'}J^{'} \rangle  = (-1)^{L^{'} + L + 1 + S} \sqrt{(2J^{'} + 1)(2 L + 1)}  \begin{Bmatrix} L & L^{'} & 1 \\ J^{'} &  J & S \\ \end{Bmatrix} \langle nL \mid \mid \textbf{d} \mid \mid nL^{'} \rangle $
+
+$A_T(n^{'}J^{'}) = \sum_{J} \Gamma_{n^{'} J^{'} \rightarrow nJ} = \frac{\mid \langle nL \mid \mid \textbf{d} \mid \mid nL^{'} \rangle \mid^2}{3 \pi \epsilon_0 \hbar c^3} \frac{2L+1}{2L^{'}+1} \sum_J \omega_{n^{'} J^{'} \rightarrow nJ}^3 (2J+1)(2L^{'}+1) \begin{Bmatrix} L & L^{'} & 1 \\ J^{'} &  J & S \\ \end{Bmatrix}^2$
+
+The branching ratio is then
+
+$\frac{\Gamma_{n^{'} J^{'} \rightarrow nJ}}{A_T(n^{'}J^{'})} = \frac{\omega_{n^{'} J^{'} \rightarrow nJ}^3 (2J+1)\begin{Bmatrix} L & L^{'} & 1 \\ J^{'} &  J & S \\ \end{Bmatrix}^2}{\sum_J \omega_{n^{'} J^{'} \rightarrow nJ}^3 (2J+1)\begin{Bmatrix} L & L^{'} & 1 \\ J^{'} &  J & S \\ \end{Bmatrix}^2}$
+
+Then we can compute the corresponding
+$\mid \langle nJ \mid \mid \textbf{d} \mid \mid n^{'} J^{'} \rangle \mid^2$
+
+It's the same as Boyd thesis when considering different $m_J, m_{J^{'}}$
+states using Clebsch-Gordon coefficients and taking $\omega^3$ term into
+$\zeta$ correction. (Eq 3.9-3.10)
+
+    \section{References}\label{references}
+
+    \begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Steck, 'Quantum and Atomic Optics', chapter 7.
+\item
+  Boyd thesis
+\item
+  Martin thesis
+\end{enumerate}
+    % Add a bibliography block to the postdoc
+
+\section{Special note}\label{special note}
+
+The conjugate of the reduced matric element is
+
+$\langle J^{'} \mid \mid   T_q^{(k)} \mid \mid J \rangle = (-1)^{J^{'} - J} \sqrt{\frac{2 J + 1}{2 J^{'} + 1}} \langle J \mid \mid   T_q^{(k)} \mid \mid J^{'} \rangle ^{*}$
+
+which means specifically $\mid \langle J^{'} \mid\mid \textbf{d} \mid \mid J \rangle \mid^2 = \frac{2 J + 1}{2 J^{'} + 1} \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2 $
+
+Otherwise it will lead to wrong calculation of  excited state polarizability (Sr-88, $^1P_1$ and $^1S_0$).
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+From Kien2013, we can also define another normalization of reduced matrix as:
+
+(Wiger-Eckart theorem) $\langle \alpha j m \mid  T_q^{(k)} \mid \alpha^{'} j^{'} m^{'} \rangle = \frac{ \langle \alpha j  \mid \mid \textbf{T}^{(k)} \mid \mid \alpha^{'} j^{'}  \rangle }{\sqrt{2 j + 1}}\langle jm \mid j^{'} m^{'}; k q \rangle$
+
+or $\langle \alpha j  \mid \mid \textbf{T}^{(k)} \mid \mid \alpha^{'} j^{'}  \rangle = (-1)^{2k} \sqrt{2j + 1}\langle \alpha j  \mid \mid \textbf{T}^{(k)} \mid \mid \alpha^{'} j^{'}  \rangle$ (Steck, equation 7.238-7.239)
+
+or through Wigner-3j symbol
+
+Then $\mid \langle J^{'} \mid\mid \textbf{d} \mid \mid J \rangle \mid^2 =  \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2 $
+
+(Decomposition rule) $\langle  j  \mid \mid \textbf{T}^{(k)} \mid \mid j^{'}  \rangle = \delta_{j_2 j_2^{'}} (-1)^{j^{'} + j_1 + k + j_{2}} \sqrt{(2j^{'} + 1)(2 j + 1)}  \begin{Bmatrix}
+j_{1} & j_{1}^{'} & k \\
+j^{'} & j  & j_{2} \\ \end{Bmatrix} \langle  j_1  \mid \mid \textbf{T}^{(k)} \mid \mid j_1^{'}  \rangle$
+
+(Decay rate) $\Gamma_{n^{'} J^{'} \rightarrow nJ} = \frac{\omega_{n^{'} J^{'} \rightarrow nJ}^3}{3 \pi \epsilon_0 \hbar c^3} \frac{1}{2 J^{'} + 1} \mid \langle nJ \mid \mid \textbf{d} \mid \mid n^{'} J^{'} \rangle \mid^2$
+
+
+The corresponding polarizabilities are:
+
+$\alpha^{(0)}(J, \omega) = \sum_{J^{'}} \frac{2}{3(2J +1)}\frac{ \omega_{J^{'} J} \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2}{ \hbar (\omega_{J^{'} J}^2 - \omega^2)}$
+
+$\alpha^{(1)}(J, \omega) = \sum_{J^{'}}(-1)^{J + J^{'} + 1} \sqrt{\frac{6J}{(J+1)(2J + 1)}} \begin{Bmatrix}
+1 & 1 & 1 \\
+J & J  & J^{'} \\ \end{Bmatrix}  \frac{ \omega_{J^{'} J} \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2}{\hbar (\omega_{J^{'} J}^2 - \omega^2)}$
+
+$\alpha^{(2)}(J, \omega) = \sum_{J^{'}}(-1)^{J + J^{'}} \sqrt{\frac{40J(2J-1)}{3(J+1)(2J + 1)(2J+3)}} \begin{Bmatrix}
+1 & 1 & 2 \\
+J & J  & J^{'} \\ \end{Bmatrix}  \frac{ \omega_{J^{'} J} \mid \langle J \mid\mid \textbf{d} \mid \mid J^{'} \rangle \mid^2}{\hbar (\omega_{J^{'} J}^2 - \omega^2)}$
+    
+    
+    
+    \end{document}
